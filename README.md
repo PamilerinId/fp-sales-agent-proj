@@ -2,7 +2,7 @@
 Web App that enables field-salesmen track sales
 
 # Task
-## Requirements
+### Requirements
 Design a Single Page Application (SPA) that will track the fictitious sales of agents in real time on
 the field (hence, mobile friendly) by allowing them to input their agent ID, plan sold, and the
 associated price.
