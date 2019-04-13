@@ -1,0 +1,30 @@
+<div class="container">
+  <div class="LoginFormDiv" style="vertical-align:middle;" >
+      <div class="Logo" ><img style="padding-top: 40px; padding-bottom: 20px;
+        height: 157px;" src="../../assets/logo.png"></div>
+    <form (ngSubmit)="onLogin()" [formGroup]="userLogin" class='form'>
+          <div class="form-group">
+            <mat-form-field class="full-width">
+                <input matInput placeholder="Email" formControlName="email" id="email">
+                <mat-error *ngIf="userLogin.get('email').hasError('required')">
+                  Email is <strong>required</strong>
+                </mat-error>
+                <mat-error *ngIf="userLogin.get('email').hasError('email')">Invalid email.</mat-error>
+              </mat-form-field>
+          <br>
+          <mat-form-field class="full-width">
+              <input matInput [type]="hide ? 'password' : 'text'" placeholder="Password" formControlName="password" id="password">
+              <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+              <mat-error *ngIf="userLogin.get('password').hasError('required')">
+                Password is <strong>required</strong>
+              </mat-error>
+            </mat-form-field>
+            </div>
+          <button mat-ripple mat-raised-button type="submit" id="submit" [disabled]="userLogin.invalid || loading"
+          color="primary">Login</button><mat-spinner style="margin: 0" [diameter]="10" *ngIf="loading"></mat-spinner>
+          <br>
+          <a [routerLink]="['/recover-password']">Forgot your password ?</a>
+      </form>
+      <p> Don't have an account? <a [routerLink]="['/signup']">SignUp</a></p>
+</div></div>
+<!-- SOCIAL LOGINS -->
