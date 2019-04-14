@@ -4,8 +4,13 @@ url = "https://pypi.org/simple"
 verify_ssl = true
 
 [dev-packages]
+pylint = "*"
 
 [packages]
+django = "==2.2"
+mysqlclient = "==1.4.2.post1"
+pytz = "==2019.1"
+sqlparse = "==0.3.0"
 
 [requires]
 python_version = "3.6"
