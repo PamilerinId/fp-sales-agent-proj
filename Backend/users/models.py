@@ -3,7 +3,7 @@ from django.conf import settings
 from django.contrib.auth.models import AbstractUser
 from django.db.models.signals import post_save, pre_save
 from django.dispatch import receiver
-import datetime
+from datetime import datetime
 
 
 # Create your models here.
@@ -25,9 +25,11 @@ class Agent(models.Model):
 @receiver(pre_save, sender=settings.AUTH_USER_MODEL)
 def set_username(sender, instance, **kwargs):
     if not instance.username:
-        username = instance.first_name[0].upper() + instance.last_name[0].upper() + datetime.date.strftime
+        username = instance.first_name[0].upper() + instance.last_name[0].upper()+
+        datetime.today().strftime('%y%m%d')
         counter = 1
         while settings.AUTH_USER_MODEL.objects.filter(username=username):
-            username = instance.first_name + str(counter)
+            username = instance.first_name[0].upper() + instance.last_name[0].upper() +
+            datetime.today().strftime('%y%m%d') + str(counter)
             counter += 1
         instance.username = username
