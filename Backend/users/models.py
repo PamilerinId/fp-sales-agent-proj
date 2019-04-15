@@ -14,10 +14,13 @@ class CustomUser(AbstractUser):
 
 
 class Agent(models.Model):
+    """
+    Sales agent profile for addon stuff
+    """
     user = models.OneToOneField('agent', settings.AUTH_USER_MODEL,
      unique=True)
-    display_img = models.ImageField('profile picture', upload_to='user_images', null=True, blank=True)
-    phone_no = models.CharField('phone number', max_length=15, blank=True)
+    # display_img = models.ImageField('profile picture', upload_to='user_images', null=True, blank=True)
+    # phone_no = models.CharField('phone number', max_length=15, blank=True)
 
     def __str__(self):
         return str(self.user.username)
