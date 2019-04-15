@@ -7,8 +7,8 @@ import uuid
 
 class SalesLog(models.Model):
     uuid = models.UUIDField(
-        db_index=True, default=uuid.uuid4, editable=False, primary_key=True)
-    agent = models.OneToOneField(
+        db_index=True, default=uuid.uuid4, editable=False, primary_key=True, max_length=8)
+    agent = models.ForeignKey(
         Agent, on_delete=models.CASCADE, null=True, blank=True)
     plan_sold = models.ForeignKey(Plan, on_delete=models.CASCADE)
     commission_made = models.PositiveIntegerField()

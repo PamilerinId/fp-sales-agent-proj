@@ -47,8 +47,8 @@ DJANGO_APPS = [
 ]
 THIRD_PARTY = [
     'rest_framework',
-    'rest_framework_simplejwt',
     'rest_framework.authtoken',
+    'rest_auth'
 ]
 LOCAL_APPS = [
     'users',
@@ -151,6 +151,11 @@ REST_FRAMEWORK = {
         'rest_framework.permissions.IsAdminUser',
     ),
     'DEFAULT_AUTHENTICATION_CLASSES': [
-        'rest_framework_simplejwt.authentication.JWTAuthentication',
+        'rest_framework_jwt.authentication.JSONWebTokenAuthentication',
     ],
 }
+
+REST_AUTH_SERIALIZERS = {
+    'USER_DETAILS_SERIALIZER': 'users.serializers.CustomUserSerializer',
+}
+REST_USE_JWT = True

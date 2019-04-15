@@ -7,5 +7,6 @@ urlpatterns = [
     path('', views.api_root),  # Api Root
     path('users/', include('users.urls')),
     path('plans/', include('plans.urls')),
-    path('sales_logs/', include('sales_logs.urls')),
+    path('sales-logs/', include('sales_logs.urls')),
+    path('rest-auth/', include('rest_auth.urls'))
 ]
