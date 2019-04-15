@@ -1,3 +1,22 @@
-<p>
-  sales works!
-</p>
+<!-- Card -->
+<mat-card>
+  <!-- Dropdown -->
+  <mat-card-title>Mission Params:</mat-card-title>
+  <mat-card-content>
+      <mat-form-field>
+          <mat-label>Pick a plan</mat-label>
+          <mat-select [(value)]="selected">
+            <mat-option>Plan</mat-option>
+            <mat-option *ngFor="let plan of plans" [(value)]="plan">
+              {{plan.name}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <p>Cost: N{{plan.cost}}.00</p>
+  </mat-card-content>
+  <!-- Button -->
+  <mat-card-actions>
+      <button mat-button (click)="logSales()">Post</button>
+  </mat-card-actions>
+</mat-card>
+

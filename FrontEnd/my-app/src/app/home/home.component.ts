@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService, NotificationService } from '../shared';
+import { AuthService, NotificationService, User } from '../shared';
 import { Subscription } from 'rxjs';
 
 @Component({
@@ -12,6 +12,8 @@ export class HomeComponent implements OnInit {
   currentUser: User;
   currentUserSubscription: Subscription;
 
+  enabled = false;
+
   constructor(
     private authService: AuthService,
     private notifyBar: NotificationService,
@@ -21,7 +23,19 @@ export class HomeComponent implements OnInit {
     });
    }
 
+  //  get user details
+  // capture emmitted value
+  // animation of emmited val
   ngOnInit() {
+  }
+
+  openPanel() {
+    this.enabled = true;
+    // emit value to child
+  }
+
+  logout() {
+    this.authService.logout();
   }
 
 }

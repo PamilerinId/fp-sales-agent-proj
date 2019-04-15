@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 
@@ -8,6 +9,9 @@ import { LoginComponent } from './login/login.component';
 import { JwtInterceptor, ErrorInterceptor, AuthGuard } from './shared';
 import { HomeComponent } from './home/home.component';
 import { SalesComponent } from './sales/sales.component';
+
+import {MatSnackBarModule, MatCardModule, MatSelectModule} from '@angular/material';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 
 @NgModule({
@@ -20,6 +24,12 @@ import { SalesComponent } from './sales/sales.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
+    BrowserAnimationsModule,
+    MatSnackBarModule,
+    MatCardModule,
+    MatSelectModule
   ],
   providers: [AuthGuard,
               {provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true},

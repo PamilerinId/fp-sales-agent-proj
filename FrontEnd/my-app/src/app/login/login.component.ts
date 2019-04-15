@@ -31,7 +31,7 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
     this.loading = false;
     this.userLogin = this.formBuilder.group({
-      email: ['', [Validators.required, Validators.email]],
+      username: ['', [Validators.required]],
       password: ['', Validators.required]
     });
     // if (localStorage.getItem('currentUser')) {
@@ -47,7 +47,7 @@ export class LoginComponent implements OnInit {
       return;
     }
     this.loading = true;
-    this.authService.login(this.f.email.value, this.f.password.value)
+    this.authService.login(this.f.username.value, this.f.password.value)
         .pipe(first())
         .subscribe(
           data => {

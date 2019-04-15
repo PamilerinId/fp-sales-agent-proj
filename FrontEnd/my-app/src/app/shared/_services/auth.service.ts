@@ -1,14 +1,12 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-// import { environment } from "environments/environment";
-import * as ApplicationSettings from 'tns-core-modules/application-settings';
-import { User } from '../_models/user.model';
-import { Login } from '../_models/login.model';
+import { environment } from '../../../environments/environment';
+// import * as ApplicationSettings from 'tns-core-modules/application-settings';
+import { User } from '../_models';
 import { BehaviorSubject , Observable } from 'rxjs';
 import { map, finalize, share } from 'rxjs/operators';
-import { Registration } from '../_models/registration.model';
 import { WebSocketSubject } from 'rxjs/webSocket';
-import { environment } from '../../../environments/environment';
+
 
 @Injectable({
   providedIn: 'root'
@@ -43,31 +41,23 @@ export class AuthService {
     return this.currentUserSubject.value;
   }
 
-  signup(userReg: Registration) {
-    return this.http.post(`${this.apiUrl}/api/v1/rest-auth/registration/`, userReg, this.httpOptions);
-  }
+  // signup(userReg: Registration) {
+  //   return this.http.post(`${this.apiUrl}/api/v1/rest-auth/registration/`, userReg, this.httpOptions);
+  // }
 
   login(email: string, password: string) {
-    return this.http.post<Login>(`${this.apiUrl}/api/v1/rest-auth/login/`,
+    return this.http.post(`${this.apiUrl}/api/v1/rest-auth/login/`,
      {email, password}, this.httpOptions)
         .pipe(map((loggedUser) => {
           if (loggedUser['user'] && loggedUser['token']) {
             // store user details and jwt token in local storage to keep user logged in between page refreshes
-            ApplicationSettings.setString('currentUser', JSON.stringify(loggedUser));
+            localStorage.setItem('currentUser', JSON.stringify(loggedUser));
             this.currentUserSubject.next(loggedUser['user']);
         }
 
           return loggedUser;
       }));
   }
-
-  // connect(): void {
-  //   if (!this.webSocket || this.webSocket.closed) {
-  //     this.webSocket = new WebSocketSubject("ws://localhost:8000/ws/repairs/");
-  //     this.messages = this.webSocket.pipe(share());
-  //     this.messages.subscribe(message => console.log(message));
-  //   }
-  // }
 
   logout() {
     return this.http.post(`${this.apiUrl}/api/v1/rest-auth/logout`, null, this.httpOptions).pipe(
@@ -76,19 +66,6 @@ export class AuthService {
     );
   }
 
-  recoverPwd(email: string) {
-    return this.http.post(`${this.apiUrl}/api/v1/rest-auth/password/reset/`, {email}, this.httpOptions);
-  }
-
-  resetPwd(new_password1: string, new_password2: string, uid: string, token: string) {
-    return this.http.post(`${this.apiUrl}/api/v1/rest-auth/password/reset/confirm/`, {new_password1,
-                                                                                      new_password2,
-                                                                                      uid, token});
-  }
-
-  verifyEmail(key: string) {
-    return this.http.post(`${this.apiUrl}/api/v1/rest-auth/registration/verify-email/`, {key}, this.httpOptions);
-  }
 
 // Create Social Logins
   fb_login(access_token: string, code: string) {
