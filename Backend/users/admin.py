@@ -1,8 +1,8 @@
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
 from django.conf import settings
-from .models import Agent
-from .forms import SignUpForm
+from .models import Agent, CustomUser
+
 
 
 class ProfileInline(admin.StackedInline):
@@ -15,7 +15,7 @@ class ProfileInline(admin.StackedInline):
 class CustomUserAdmin(UserAdmin):
     inlines = (ProfileInline, )
     list_display = ('username', 'first_name', 'last_name', 'is_staff')
-    list_select_related = ( 'profile', )
+    list_select_related = ( 'agent', )
 
     fieldsets = (
         ('Personal information', {'fields': ('first_name', 'last_name', 'email', 'password')}),
@@ -37,5 +37,4 @@ class CustomUserAdmin(UserAdmin):
         return super(CustomUserAdmin, self).get_inline_instances(request, obj)
 
 
-admin.site.unregister(settings.AUTH_USER_MODEL)
-admin.site.register(settings.AUTH_USER_MODEL, CustomUserAdmin)
+admin.site.register(CustomUser, CustomUserAdmin)

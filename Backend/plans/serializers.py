@@ -8,5 +8,5 @@ class PlanSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Plan
-        fields = ('uuid', 'name', 'description',
-                 'cost')
+        fields = ['uuid', 'name', 'description',
+                 'cost',]

@@ -8,11 +8,12 @@ import uuid
 class SalesLog(models.Model):
     uuid = models.UUIDField(
         db_index=True, default=uuid.uuid4, editable=False, primary_key=True)
-    agent = models.OneToOneField(Agent)
+    agent = models.OneToOneField(
+        Agent, on_delete=models.CASCADE, null=True, blank=True)
     plan_sold = models.ForeignKey(Plan, on_delete=models.CASCADE)
     commission_made = models.PositiveIntegerField()
     init_date = models.DateTimeField(auto_now_add=True, null=True)
 
     def __str__(self):
-        return self.uuid
+        return str(self.uuid)
     

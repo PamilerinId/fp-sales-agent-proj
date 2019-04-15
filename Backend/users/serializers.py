@@ -7,8 +7,8 @@ class CustomUserSerializer(serializers.ModelSerializer):
     
     class Meta:
         model = CustomUser
-        fields = ('id', 'username', 'email',
-                 'last_name', 'first_name')
+        fields = ['id', 'username', 'email',
+                 'last_name', 'first_name', ]
 
 
 class AgentSerializer(serializers.ModelSerializer):
@@ -16,5 +16,5 @@ class AgentSerializer(serializers.ModelSerializer):
     user = CustomUserSerializer()
     class Meta:
         model = Agent
-        fields = ('user')
+        fields = "__all__"
         depth = 1

@@ -13,4 +13,4 @@ class SalesLogSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = SalesLog
-        fields = ('uuid', 'agent', 'plan_sold', 'commision_made')
+        fields = ['uuid', 'agent', 'plan_sold', 'commission_made',]

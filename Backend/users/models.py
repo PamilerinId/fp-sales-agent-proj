@@ -17,8 +17,7 @@ class Agent(models.Model):
     """
     Sales agent profile for addon stuff
     """
-    user = models.OneToOneField('agent', settings.AUTH_USER_MODEL,
-     unique=True)
+    user = models.OneToOneField(CustomUser, unique=True, on_delete=models.CASCADE)
     # display_img = models.ImageField('profile picture', upload_to='user_images', null=True, blank=True)
     # phone_no = models.CharField('phone number', max_length=15, blank=True)
 
@@ -30,8 +29,17 @@ def set_username(sender, instance, **kwargs):
     if not instance.username:
         username = instance.first_name[0].upper() + instance.last_name[0].upper() + datetime.today().strftime('%y%m%d')
         counter = 1
-        while settings.AUTH_USER_MODEL.objects.filter(username=username):
-            username = instance.first_name[0].upper() + instance.last_name[0].upper() +
-            datetime.today().strftime('%y%m%d') + str(counter)
+        while CustomUser.objects.filter(username=username):
+            username = instance.first_name[0].upper() + instance.last_name[0].upper() + datetime.today().strftime('%y%m%d') + str(counter)
             counter += 1
         instance.username = username
+
+@receiver(post_save, sender=settings.AUTH_USER_MODEL)
+def create_user_profile(sender, instance, created, **kwargs):
+    if created:
+        Agent.objects.get_or_create(user=instance)
+
+
+@receiver(post_save, sender=settings.AUTH_USER_MODEL)
+def save_user_profile(sender, instance, **kwargs):
+    Agent.objects.get_or_create(user=instance)
