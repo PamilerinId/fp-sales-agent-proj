@@ -31,7 +31,8 @@ SECRET_KEY = env('SECRET_KEY')
 DEBUG = env('DEBUG') # False if not in os.environ
 TEMPLATE_DEBUG = DEBUG
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost', 
+                    '.herokuapp.com']
 
 
 # Application definition
@@ -46,7 +47,8 @@ DJANGO_APPS = [
 ]
 THIRD_PARTY = [
     'rest_framework',
-    'rest_framework_simplejwt'
+    'rest_framework_simplejwt',
+    'rest_framework.authtoken',
 ]
 LOCAL_APPS = [
     'users',
@@ -118,26 +120,26 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/2.2/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'en-NG'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Africa/Lagos'
 
 USE_I18N = True
 
 USE_L10N = True
 
 USE_TZ = True
-
+LOGIN_REDIRECT_URL = 'home'
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
 public_dir = BASE_DIR.path('public/')
 
-MEDIA_ROOT = public_dir('media')
-MEDIA_URL = 'media/'
-STATIC_ROOT = public_dir('static')
-STATIC_URL = 'static/'
+MEDIA_ROOT = public_dir('media/')
+MEDIA_URL = '/media/'
+STATIC_ROOT = public_dir('static/')
+STATIC_URL = '/static/'
 
 CACHES = {
     'default': env.cache(),
@@ -145,6 +147,9 @@ CACHES = {
 }
 
 REST_FRAMEWORK = {
+    'DEFAULT_PERMISSION_CLASSES': (
+        'rest_framework.permissions.IsAdminUser',
+    ),
     'DEFAULT_AUTHENTICATION_CLASSES': [
         'rest_framework_simplejwt.authentication.JWTAuthentication',
     ],
