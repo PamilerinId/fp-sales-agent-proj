@@ -20,3 +20,28 @@ aggregated by sales per day from a MySQL server for each agent sending in data.
 > Anything that wows us
 
 # Setup
+Simple architecture:
+Project is comprised of a CLient and a Server; Client is built with angular, Server is built with Python django.
+
+## Backend(Server)
+A simple REST API server
+
+from `Backend` folder
+### Install Pacckage Dependencies:
+run `pipenv shell`
+then `pip install -r requirements.txt`
+### Create database and admin user
+run `python manage.py migrate`
+then `python manage.py createsuperuser` and follow the prompts
+### Startup Server!!
+run `python manage.py runserver` and follow the prompts
+or just visit `127.0.0.1:8000`
+visit admin page at `/pooh`
+api docs page at `/docs`
+schema page at `schema`
+api root at `/api/v1`
+
+## Frontend(Client)
+Readme in Frontend folder.
+
+.env file should be gitignored!
