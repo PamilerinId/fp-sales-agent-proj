@@ -49,7 +49,7 @@ class AgentDetailView(generics.RetrieveUpdateDestroyAPIView):
     Detail view for agents
     """
     serializer_class = serializers.AgentSerializer
-    lookup_field = 'user_username'
+    lookup_field = 'user_id'
     permission_classes = (permissions.AllowAny,)
 
     def get_queryset(self):

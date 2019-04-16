@@ -1,21 +1,16 @@
 <div class="container">
   <button mat-raised-button (click)="logout()" >Logout</button>
   <mat-card>
-      <mat-card-title>Yello! <strong>Agent {{user.username}}</strong></mat-card-title>
+      <mat-card-title>Welcome <strong>{{user.first_name}} {{user.last_name}}</strong></mat-card-title>
+      <mat-card-subtitle>Codename: Agent {{user.username}} </mat-card-subtitle>
       <!-- ng if div here -->
-      <div>
-          <label>+{{}} COMISSION!</label>
+      <div *ngIf="visible">
+          <label>++ N{{commision}} COMISSION!</label>
       </div>
       <mat-card-content>
         <!-- Monkey DO: remember to try out a simple line graph... maybe? -->
         <button (click)="openPanel()">New Sale!</button>
-        <!-- blue pattern bg with white letters
-          animations? ::Monkey TRY
-            Cost label only appears when dropdown is selected
-          button appears with dropdown 
-        
-        Sales component div becomes active on button click-->
-        <app-sales></app-sales>
+        <app-sales [work]="enabled" (commishEvent)="getComish($event)" ></app-sales>
       </mat-card-content> 
   </mat-card>    
 </div>

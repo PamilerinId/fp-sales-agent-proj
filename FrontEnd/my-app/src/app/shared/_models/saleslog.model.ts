@@ -3,8 +3,8 @@ import { Agent } from './agent.model';
 
 
 export class SalesLog {
-    plan: Plan;
     agent: Agent;
-    commission: number;
-    date: string;
+    plan_sold: Plan;
+    commission_made: number;
+    init_date: string;
 }

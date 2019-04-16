@@ -10,7 +10,8 @@ import { JwtInterceptor, ErrorInterceptor, AuthGuard } from './shared';
 import { HomeComponent } from './home/home.component';
 import { SalesComponent } from './sales/sales.component';
 
-import {MatSnackBarModule, MatCardModule, MatSelectModule} from '@angular/material';
+import {MatSnackBarModule, MatCardModule, MatSelectModule, MatButtonModule,
+   MatIconModule, MatProgressSpinnerModule} from '@angular/material';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 
@@ -29,7 +30,10 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
     BrowserAnimationsModule,
     MatSnackBarModule,
     MatCardModule,
-    MatSelectModule
+    MatSelectModule,
+    MatIconModule,
+    MatButtonModule,
+    MatProgressSpinnerModule
   ],
   providers: [AuthGuard,
               {provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true},

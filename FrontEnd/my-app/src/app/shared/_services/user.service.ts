@@ -18,6 +18,10 @@ export class UserService {
     };
   }
 
+  getAgent(id: number) {
+    return this.http.get(`${this.apiUrl}/api/v1/users/agent/${id}/`, this.httpOptions);
+  }
+
   // remember:not implementing full crud because of limited functionality and clutter
   getAllPlans() {
     return this.http.get<Array<Plan>>(`${this.apiUrl}/api/v1/plans/`);
