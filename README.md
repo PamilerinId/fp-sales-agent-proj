@@ -27,7 +27,7 @@ Project is comprised of a CLient and a Server; Client is built with angular, Ser
 A simple REST API server
 
 from `Backend` folder
-### Install Pacckage Dependencies:
+### Install Package Dependencies:
 run `pipenv shell`
 then `pip install -r requirements.txt`
 ### Create database and admin user
@@ -41,7 +41,8 @@ api docs page at `/docs`
 schema page at `schema`
 api root at `/api/v1`
 
-## Frontend(Client)
-Readme in Frontend folder.
 
 .env file should be gitignored!
+
+## Frontend(Client)
+Readme in Frontend folder.
