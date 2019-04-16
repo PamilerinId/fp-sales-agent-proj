@@ -5,7 +5,7 @@ import { environment } from '../../../environments/environment';
 import { User } from '../_models';
 import { BehaviorSubject , Observable } from 'rxjs';
 import { map, finalize, share } from 'rxjs/operators';
-import { WebSocketSubject } from 'rxjs/webSocket';
+// import { WebSocketSubject } from 'rxjs/webSocket';
 
 
 @Injectable({
@@ -20,7 +20,7 @@ export class AuthService {
 
   // base url taken from envronment variables
 
-  webSocket: WebSocketSubject<any>;
+  // webSocket: WebSocketSubject<any>;
   messages: Observable<any>;
 
   private apiUrl = environment.apiUrl;

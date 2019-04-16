@@ -25,7 +25,7 @@ schema_view = get_schema_view(title='FP Sales API')
 
 urlpatterns = [
     path('', include('django.contrib.auth.urls'), name='home'),
-    path('admin/', admin.site.urls),
+    path('pooh/', admin.site.urls), # renamed from admin to pooh... small measure of security
     path('api/v1/', include('api.urls')),  # Entry-point for API endpoints
     path('schema/', schema_view),
     path('docs/', include_docs_urls(title='FP Sales API', authentication_classes=[],

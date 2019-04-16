@@ -48,7 +48,8 @@ DJANGO_APPS = [
 THIRD_PARTY = [
     'rest_framework',
     'rest_framework.authtoken',
-    'rest_auth'
+    'rest_auth',
+    'corsheaders',
 ]
 LOCAL_APPS = [
     'users',
@@ -60,6 +61,7 @@ INSTALLED_APPS = DJANGO_APPS + LOCAL_APPS + THIRD_PARTY
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -145,6 +147,10 @@ CACHES = {
     'default': env.cache(),
     # 'redis': env.cache('REDIS_URL')
 }
+
+# CORS allowed for Angular Development
+
+CORS_ORIGIN_ALLOW_ALL = True
 
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': (

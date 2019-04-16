@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators} from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
-import { AuthService } from '../shared';
-import { first, retry } from 'rxjs/operators';
-import { NotificationService } from '../shared';
+import { AuthService } from '../shared/_services/auth.service';
+import { first } from 'rxjs/operators';
+import { NotificationService } from '../shared/_services/notification.service';
 
 
 @Component({
@@ -29,6 +29,7 @@ export class LoginComponent implements OnInit {
      }
 
   ngOnInit() {
+    console.log('get here');
     this.loading = false;
     this.userLogin = this.formBuilder.group({
       username: ['', [Validators.required]],

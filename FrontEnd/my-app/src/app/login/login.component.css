@@ -1,28 +1,23 @@
 
 
 .form {
-    min-width: 150px;
+    min-width: 300px;
     max-width: 500px;
     width: 100%;
-    color: white;
+    text-align: center;
     /* background-color: white; */
   }
   
 .full-width {
-color:  white;
 /* background-color: white; */
-width: 88%;
+    width: 90%;
 }
 
 .container {
-    height: 100vh;
+    vertical-align: middle;
+    height: 60vh;
     width: 100%;
-    /* background: url('../../assets/background.png') no-repeat center center fixed; */
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
-    color: antiquewhite
+    background-color:  white; 
 }
 
 a {
