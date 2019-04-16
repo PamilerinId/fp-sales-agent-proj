@@ -6,12 +6,23 @@
       <mat-card-subtitle>Codename: Agent {{currentUser.username}} </mat-card-subtitle>
       <!-- ng if div here -->
       <div *ngIf="visible">
-          <label>++ N{{commision}} COMISSION!</label>
+          <label>++ N{{log.commision_made}} COMISSION!</label>
       </div>
       <mat-card-content>
         <!-- Monkey DO: remember to try out a simple line graph... maybe? -->
-        <button  mat-raised-button (click)="openPanel()">New Sale!</button>
-        <!-- <app-sales [work]="enabled" (commishEvent)="getComish($event)" ></app-sales> -->
+        <!-- <button  mat-raised-button (click)="openPanel()">New Sale!</button> -->
+          <!-- Dropdown -->
+          <mat-card-subtitle>Params:</mat-card-subtitle>
+            <form (ngSubmit)="onSalesLog()" [formGroup]="postSales" class="form">
+              <mat-form-field>
+                <mat-select  placeholder="pick a plan" formControlName="planSelect" id="planSelect">
+                  <mat-option>----</mat-option>
+                  <mat-option *ngFor="let plan of plans" [value]="plan">{{plan.name}}</mat-option>
+                  </mat-select>
+                </mat-form-field>
+                <p>Cost: N{{plan.cost}}.00</p>
+                <button mat-raised-button type="submit" id="submit" [disabled]="postSales.invalid || loading">Post</button>
+            </form>
       </mat-card-content> 
   </mat-card>    
 </div>

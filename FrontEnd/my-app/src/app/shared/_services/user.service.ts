@@ -19,7 +19,7 @@ export class UserService {
   }
 
   getAgent(id: number) {
-    return this.http.get(`${this.apiUrl}/api/v1/users/agent/${id}/`, this.httpOptions);
+    return this.http.get(`${this.apiUrl}/api/v1/users/agents/${id}/`);
   }
 
   // remember:not implementing full crud because of limited functionality and clutter

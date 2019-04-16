@@ -61,8 +61,8 @@ export class AuthService {
 
   logout() {
     console.log('logout2');
-    localStorage.removeItem('currentUser');
     this.currentUserSubject.next(null);
+    localStorage.clear();
     return this.http.post(`${this.apiUrl}/api/v1/rest-auth/logout`, this.httpOptions);
   }
 

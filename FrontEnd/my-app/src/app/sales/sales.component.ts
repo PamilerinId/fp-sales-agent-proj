@@ -21,7 +21,6 @@ export class SalesComponent implements OnInit {
   log: SalesLog;
   agentObj: Agent;
 
-  @Input() work: boolean;
   @Output() commishEvent = new EventEmitter<number>();
 
   constructor(
@@ -36,7 +35,7 @@ export class SalesComponent implements OnInit {
     });
     this.userService.getAgent(this.currentUser.id).subscribe((data) => {
       // this.agentObj = data;
-      console.log(data)
+      console.log(data);
     });
     this.postSales = this.formBuilder.group({
       planSelect: Plan
@@ -63,7 +62,7 @@ export class SalesComponent implements OnInit {
         this.notifyBar.successNotify('Posted!! Go sell some more!', null);
       },
       (error) => {
-        this.notifyBar.errorNotify('Something happened, Try Agai', null);
+        this.notifyBar.errorNotify('Something happened, Try Again', null);
       });
   }
   // how to get selected plan from

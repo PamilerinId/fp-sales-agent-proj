@@ -11,7 +11,7 @@ import { HomeComponent } from './home/home.component';
 import { SalesComponent } from './sales/sales.component';
 
 import {MatSnackBarModule, MatCardModule, MatSelectModule, MatButtonModule,
-   MatIconModule, MatProgressSpinnerModule, MatFormFieldModule, MatInputModule} from '@angular/material';
+   MatIconModule, MatProgressSpinnerModule, MatFormFieldModule, MatInputModule, MatSuffix} from '@angular/material';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 
@@ -32,11 +32,11 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
     MatSnackBarModule,
     MatCardModule,
     MatSelectModule,
-    MatIconModule,
     MatButtonModule,
     MatProgressSpinnerModule,
     MatFormFieldModule,
-    MatInputModule
+    MatInputModule,
+    MatIconModule,
   ],
   providers: [{provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true},
               {provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true}

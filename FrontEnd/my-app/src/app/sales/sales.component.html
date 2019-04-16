@@ -6,7 +6,7 @@
     <form (ngSubmit)="onSalesLog()" [formGroup]="postSales" class="form">
       <mat-form-field>
         <mat-label>Pick a plan</mat-label>
-        <mat-select [disabled]="enabled" formControlName="planSelect" id="planSelect">
+        <mat-select formControlName="planSelect" id="planSelect">
           <mat-option>----</mat-option>
           <mat-option *ngFor="let plan of plans" [value]="plan">
             {{plan.name}}
