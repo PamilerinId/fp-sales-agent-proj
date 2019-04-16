@@ -1,6 +1,8 @@
-# MyApp
+# Sales Agent Tracker Client
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.2.9.
+
+Navigate into folder and run `npm install`
 
 ## Development server
 
