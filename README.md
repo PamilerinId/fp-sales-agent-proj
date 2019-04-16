@@ -26,6 +26,14 @@ Project is comprised of a CLient and a Server; Client is built with angular, Ser
 ## Backend(Server)
 A simple REST API server
 
+Requirements
+------------
+* Python: > 3.6
+* Django: 2.2
+* MYSQL 
+* DRF, CORS, see requirements.txt
+Tested on win 10 and Ubuntu 18.0.4
+
 from `Backend` folder
 ### Install Package Dependencies:
 run `pipenv shell`
