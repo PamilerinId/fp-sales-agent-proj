@@ -16,6 +16,7 @@ export class LoginComponent implements OnInit {
   userLogin: FormGroup;
   loading: boolean;
   hide = true;
+  returnUrl: any;
 
   constructor( private formBuilder: FormBuilder,
     private router: Router,
@@ -29,21 +30,19 @@ export class LoginComponent implements OnInit {
      }
 
   ngOnInit() {
-    console.log('get here');
+    // console.log('get here');
     this.loading = false;
     this.userLogin = this.formBuilder.group({
       username: ['', [Validators.required]],
       password: ['', Validators.required]
     });
-    // if (localStorage.getItem('currentUser')) {
-    //   this.router.navigate(['dashboard']);
-    // }
+
+    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
   }
 // convenience getter for easy access to form fields
   get f() { return this.userLogin.controls; }
 
   onLogin() {
-
     if (this.userLogin.invalid) {
       return;
     }
@@ -52,9 +51,7 @@ export class LoginComponent implements OnInit {
         .pipe(first())
         .subscribe(
           data => {
-            this.router.navigate(['']).then(() => {
-            this.notifyBar.successNotify('Welcome Back!', null);
-            });
+            this.router.navigate([this.returnUrl]);
           },
           error => {
             const message = error.error['non_field_errors'][0];

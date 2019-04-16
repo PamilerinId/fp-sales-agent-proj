@@ -152,6 +152,9 @@ CACHES = {
 
 CORS_ORIGIN_ALLOW_ALL = True
 
+ACCOUNT_AUTHENTICATION_METHOD = 'username'
+ACCOUNT_USERNAME_REQUIRED = True
+
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': (
         'rest_framework.permissions.IsAdminUser',

@@ -45,9 +45,9 @@ export class AuthService {
   //   return this.http.post(`${this.apiUrl}/api/v1/rest-auth/registration/`, userReg, this.httpOptions);
   // }
 
-  login(email: string, password: string) {
+  login(username: string, password: string) {
     return this.http.post(`${this.apiUrl}/api/v1/rest-auth/login/`,
-     {email, password}, this.httpOptions)
+     {username, password}, this.httpOptions)
         .pipe(map((loggedUser) => {
           if (loggedUser['user'] && loggedUser['token']) {
             // store user details and jwt token in local storage to keep user logged in between page refreshes
@@ -60,10 +60,10 @@ export class AuthService {
   }
 
   logout() {
-    return this.http.post(`${this.apiUrl}/api/v1/rest-auth/logout`, null, this.httpOptions).pipe(
-      finalize(() => {localStorage.removeItem('currentUser');
-                      this.currentUserSubject.next(null); })
-    );
+    console.log('logout2');
+    localStorage.removeItem('currentUser');
+    this.currentUserSubject.next(null);
+    return this.http.post(`${this.apiUrl}/api/v1/rest-auth/logout`, this.httpOptions);
   }
 
 

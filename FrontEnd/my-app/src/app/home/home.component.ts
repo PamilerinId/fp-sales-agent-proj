@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService, NotificationService, User, Agent } from '../shared';
 import { Subscription } from 'rxjs';
 import { UserService } from '../shared/_services/user.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -24,6 +25,7 @@ export class HomeComponent implements OnInit {
     private authService: AuthService,
     private notifyBar: NotificationService,
     private userService: UserService,
+    private router: Router
   ) {
     this.currentUserSubscription = this.authService.currentUser.subscribe((user) => {
       this.currentUser = user['user'];
@@ -43,6 +45,7 @@ export class HomeComponent implements OnInit {
 
   logout() {
     this.authService.logout();
+    this.router.navigate(['/login']);
   }
 
 }

@@ -18,6 +18,9 @@
     height: 60vh;
     width: 100%;
     background-color:  white; 
+    -webkit-box-shadow: -1px 10px 14px 0px rgba(50, 50, 50, 0.57);
+    -moz-box-shadow:    -1px 10px 14px 0px rgba(50, 50, 50, 0.57);
+    box-shadow:         -1px 10px 14px 0px rgba(50, 50, 50, 0.57);
 }
 
 a {

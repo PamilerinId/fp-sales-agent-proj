@@ -10,8 +10,13 @@ from datetime import datetime
 
 
 class CustomUser(AbstractUser):
-    pass
+    
+    USERNAME_FIELD = 'username'
 
+    def __str__(self):
+        return self.username
+
+    
 
 class Agent(models.Model):
     """
