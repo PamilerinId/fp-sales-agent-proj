@@ -45,6 +45,12 @@ from `Backend` folder
 * api docs page at `/docs`
 * schema page at `schema`
 * api root at `/api/v1`
+### Create Agent and Plan
+* Visit admin page and create 
+** Agents
+** Plans
+
+Quite straightforward. :)
 
 
 .env file should be gitignored!
