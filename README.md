@@ -34,7 +34,7 @@ Tested on win 10 and Ubuntu 18.0.4
 from `Backend` folder
 ### Install Package Dependencies:
 * run `pipenv shell`
-* then `pip install -r requirements.txt`
+* then `pip install -r requirements.txt` when you see a (`backend or sormething`) in fron tof the cmd prompt
 ### Create database and admin user
 * run `python manage.py migrate`
 * then `python manage.py createsuperuser` and follow the prompts
@@ -48,6 +48,12 @@ from `Backend` folder
 
 
 .env file should be gitignored!
+*Forgot to add
+Having MYSQL installed on your system
+create a db with these params:
+Name: salestracker
+User: bApp
+Password: link1234
 
 ## Frontend(Client)
 Readme in Frontend folder.
