@@ -48,12 +48,11 @@ from `Backend` folder
 
 
 .env file should be gitignored!
-*Forgot to add
-Having MYSQL installed on your system
-create a db with these params:
-Name: salestracker
-User: bApp
-Password: link1234
+#### Forgot to add
+Having MYSQL installed on your system, create a db with these params:
+* Name: salestracker
+* User: bApp
+* Password: link1234
 
 ## Frontend(Client)
 Readme in Frontend folder.
